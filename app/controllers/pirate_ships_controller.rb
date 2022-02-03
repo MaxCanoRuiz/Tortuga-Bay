@@ -19,10 +19,11 @@ class PirateShipsController < ApplicationController
     @pirate_ship = PirateShip.find(params[:id])
   end
 
+
   private
 
   def pirate_ship_params
-    params.require(:pirate_ship).permit(:name, :description, :type, :capacity,
+    params.require(:pirate_ship).permit(:name, :description, :type, :capacity, :parrot_friendlyness,
                                         :number_of_canons, :port, :country, :picture)
   end
 end
