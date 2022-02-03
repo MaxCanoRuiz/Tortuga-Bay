@@ -8,8 +8,9 @@ class PirateShipsController < ApplicationController
 
   def create
     @pirate_ship = PirateShip.new(pirate_ship_params)
+    @pirate_ship.user = current_user
     if @pirate_ship.save
-      redirect_to pirate_ships_path(@pirate_ship)
+      redirect_to pirate_ship_path(@pirate_ship)
     else
       render :new
     end
@@ -23,7 +24,7 @@ class PirateShipsController < ApplicationController
   private
 
   def pirate_ship_params
-    params.require(:pirate_ship).permit(:name, :description, :type, :capacity, :parrot_friendlyness,
+    params.require(:pirate_ship).permit(:name, :description, :ship_type, :capacity, :parrot_friendlyness,
                                         :number_of_canons, :port, :country, :picture)
   end
 end

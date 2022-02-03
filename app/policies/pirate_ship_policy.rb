@@ -7,5 +7,6 @@ class PirateShipPolicy < ApplicationPolicy
     def create?
       return true
     end
+
   end
 end

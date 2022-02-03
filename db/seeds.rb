@@ -12,6 +12,7 @@ require 'faker'
 puts 'empty last seed'
 User.destroy_all
 PirateShip.destroy_all
+Booking.destroy_all
 
 puts 'create new seed'
 pirate_names = []
