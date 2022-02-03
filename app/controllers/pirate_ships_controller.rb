@@ -1,6 +1,10 @@
 class PirateShipsController < ApplicationController
   include Pundit
-  after_action :verify_authorized, except: [:new, :create]
+  after_action :verify_authorized, except: [:new, :create, :edit, :show]
+
+  def show
+    @pirate_ship = PirateShip.find(params[:id])
+  end
 
   def new
     @pirate_ship = PirateShip.new
