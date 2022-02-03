@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_01_184958) do
+ActiveRecord::Schema.define(version: 2022_02_03_182553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2022_02_01_184958) do
     t.integer "parrot_friendlyness"
     t.string "name"
     t.text "description"
-    t.string "type"
+    t.string "ship_type"
     t.integer "capacity"
     t.integer "number_of_canons"
     t.string "port"

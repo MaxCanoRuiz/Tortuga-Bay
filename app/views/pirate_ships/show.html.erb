@@ -1,0 +1,20 @@
+<div><h1><%= @pirate_ship.name%></h1></div>
+
+<div class='ship-intro'>
+  <%=image_tag @pirate_ship.picture, alt: @pirate_ship.name, :class => "ship-page-image"%>
+  <P><%= @pirate_ship.description%></p>
+  <p class="ship-page-owner"><%= @pirate_ship.user.name%><%=image_tag @pirate_ship.user.avatar_url, alt: @pirate_ship.user.name, class: 'ship-owner-avatar'%></p>
+</div>
+
+<%=link_to "Book now"%>
+
+<div>
+  <ul>
+    <li>Port: <%= @pirate_ship.port%></li>
+    <li>Type: <%= @pirate_ship.type%></li>
+    <li>Capacity: <%= @pirate_ship.capacity%></li>
+    <li>Number of cannons: <%= @pirate_ship.number_of_canons%></li>
+    <li>Parrot friendlyness: <%= @pirate_ship.parrot_friendlyness%></li>
+    <li>Country: <%= @pirate_ship.country%></li>
+  </ul>
+</div>
