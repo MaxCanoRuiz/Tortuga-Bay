@@ -9,10 +9,14 @@ class PirateShipsController < ApplicationController
   def create
     @pirate_ship = PirateShip.new(pirate_ship_params)
     if @pirate_ship.save
-      redirect_to pirate_ship_path(@pirate_ship)
+      redirect_to pirate_ships_path(@pirate_ship)
     else
       render :new
     end
+  end
+
+  def edit
+    @pirate_ship = PirateShip.find(params[:id])
   end
 
   private
