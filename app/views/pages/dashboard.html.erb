@@ -1,0 +1,21 @@
+<h1>Welcome to yer dashboa'd, <%= @name %>.</h1>
+<% if @pending_ships.size > 0 %>
+  <div class="alert alert-primary" role="alert">
+    You have pending reservations
+  </div>
+<% end %>
+<ul>
+  <li>getting notified of pending reservations: DONE
+  <li>look at pending reservations: DONE
+    <ul>
+    <% @pending_ships.each do |ship| %>
+      <li><%= link_to ship.name, pirate_ship_path(ship) %></li>
+    <% end %>
+    </ul>
+  </li>
+  <li>look at accepted resevations</li>
+  <li>accept reservations</li>
+  <li>get an list of my ships</li>
+  <li>acces my ships</li>
+  <li>I can deny or approve requests for my ships</li>
+</ul>
