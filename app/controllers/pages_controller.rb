@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:home]
   include Pundit
   def home
   end
@@ -11,5 +11,4 @@ class PagesController < ApplicationController
     @confirmed_bookings = current_user.bookings.select { |booking| booking.status == "confirmed" }
     @owned_ships = current_user.pirate_ships
   end
-
 end
