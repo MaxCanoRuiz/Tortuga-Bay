@@ -60,6 +60,8 @@ puts '---------------ships created---------------'
 (0...60).each do
   booking = Booking.create!(pirate_ship_id: PirateShip.all.sample[:id],
                             user_id: User.all.sample[:id],
+                            start_date: DateTime.new(2001,2,3,4,5,6),
+                            end_date: DateTime.new(2002,2,3,4,5,6),
                             status: %w[pending confirmed rejected].sample)
   puts "booking by: #{booking.user.name} who has rented: #{booking.pirate_ship.name} with status #{booking.status}"
 end
