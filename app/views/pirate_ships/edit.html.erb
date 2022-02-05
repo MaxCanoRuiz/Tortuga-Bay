@@ -1,0 +1,19 @@
+<%= form_for(@pirate_ship) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :ship_type %>
+  <%= f.text_field :ship_type %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :capacity %>
+  <%= f.number_field :capacity %>
+  <%= f.label :number_of_canons %>
+  <%= f.number_field :number_of_canons %>
+  <%= f.label :parrot_friendlyness %>
+  <%= f.number_field :parrot_friendlyness %>
+  <%= f.label :country %>
+  <%= f.text_field :country %>
+  <%= f.label :port %>
+  <%= f.text_field :port %>
+  <%= f.submit %>
+<% end %>
