@@ -10,7 +10,7 @@
           <%=f.input :capacity, as: :numeric %>
           <%=f.input :number_of_canons, as: :numeric %>
           <%=f.input :parrot_friendlyness, as: :numeric %>
-          <%=f.input :picture, as: :file %>
+          <%=f.input :pictures, as: :file, input_html: { multiple: true } %>
           <%= f.submit class: 'btn' %>
         <% end %>
       </div>

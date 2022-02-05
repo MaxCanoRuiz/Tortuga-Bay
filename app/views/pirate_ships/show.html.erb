@@ -1,7 +1,9 @@
 <div><h1><%= @pirate_ship.name%></h1></div>
 
 <div class='ship-intro'>
-  <%=image_tag @pirate_ship.picture, alt: @pirate_ship.name, :class => "ship-page-image"%>
+  <% @pirate_ship.pictures.each do |picture| %>
+    <%= cl_image_tag picture.key, alt: @pirate_ship.name, :class => "ship-page-image"%>
+  <% end %>
   <P><%= @pirate_ship.description%></p>
   <p class="ship-page-owner"><%= @pirate_ship.user.name%><%=image_tag @pirate_ship.user.avatar_url, alt: @pirate_ship.user.name, class: 'ship-owner-avatar'%></p>
 </div>

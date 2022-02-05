@@ -29,6 +29,6 @@ class PirateShipsController < ApplicationController
 
   def pirate_ship_params
     params.require(:pirate_ship).permit(:name, :description, :ship_type, :capacity, :parrot_friendlyness,
-                                        :number_of_canons, :port, :country, :picture)
+                                        :number_of_canons, :port, :country, pictures: [])
   end
 end
