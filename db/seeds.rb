@@ -46,7 +46,7 @@ puts '---------------pirates created---------------'
                             parrot_friendlyness: Random.rand(0..10),
                             user_id: User.all.sample[:id],
                             description: "an awesome ship matey, you'll loooove it.",
-                            ship_type: %w[barge galley galleon skiff steamer dreadnaught],
+                            ship_type: %w[barge galley galleon skiff steamer dreadnaught].sample,
                             capacity: Random.rand(22..89),
                             number_of_canons: Random.rand(12..675),
                             port: Faker::Address.city,
