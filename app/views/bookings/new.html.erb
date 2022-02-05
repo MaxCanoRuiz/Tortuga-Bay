@@ -1,0 +1,5 @@
+<%= simple_form_for [@pirate_ship, @booking] do |f| %>
+  <%=f.input :start_date, as: :date, html5: true%>
+  <%=f.input :end_date, as: :date, html5: true%>
+  <%=f.button :submit, "confirm_booking", class: "btn btn-primary"%>
+<% end %>
