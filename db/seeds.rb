@@ -10,9 +10,9 @@ require 'csv'
 require 'faker'
 
 puts 'empty last seed'
-User.destroy_all
-PirateShip.destroy_all
 Booking.destroy_all
+PirateShip.destroy_all
+User.destroy_all
 
 puts 'create new seed'
 pirate_names = []
@@ -37,16 +37,32 @@ ship_pictures.shuffle!
                         avatar_url: pirate_pictures[index],
                         email: Faker::Internet.email,
                         password: 'password')
-  puts 'test pirate'
-  ship = PirateShip.create!(name: ship_names[index],
-                            picture: ship_pictures[index],
-                            parrot_friendlyness: Random.rand(0..10),
-                            user_id: pirate[:id])
-  puts 'test ship'
-  booking = Booking.create!(pirate_ship_id: ship[:id],
-                            user_id: pirate[:id],
-                            status: 'pending')
-  puts "pirate created: #{booking.user.name} who has a ship named: #{booking.pirate_ship.name}"
+  puts "created #{pirate.name}"
 end
+puts '---------------pirates created---------------'
+
+(0...30).each do |index|
+  ship = PirateShip.create!(name: ship_names[index],
+                            parrot_friendlyness: Random.rand(0..10),
+                            user_id: User.all.sample[:id],
+                            description: "an awesome ship matey, you'll loooove it.",
+                            ship_type: %w[barge galley galleon skiff steamer dreadnaught],
+                            capacity: Random.rand(22..89),
+                            number_of_canons: Random.rand(12..675),
+                            port: Faker::Address.city,
+                            country: Faker::Address.country)
+  file = URI.open(ship_pictures[index])
+  ship.pictures.attach(io: file, filename: "my_ship.jpg", content_type: 'image/png')
+  puts "created #{ship.name} owned by #{ship.user.name}"
+end
+puts '---------------ships created---------------'
+
+(0...60).each do
+  booking = Booking.create!(pirate_ship_id: PirateShip.all.sample[:id],
+                            user_id: User.all.sample[:id],
+                            status: %w[pending confirmed rejected].sample)
+  puts "booking by: #{booking.user.name} who has rented: #{booking.pirate_ship.name} with status #{booking.status}"
+end
+puts '---------------bookings created---------------'
 
 puts 'seeding process finished'
