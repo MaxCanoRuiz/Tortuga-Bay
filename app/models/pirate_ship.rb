@@ -4,6 +4,7 @@ class PirateShip < ApplicationRecord
   has_many :users, through: :bookings
   has_many_attached :pictures
 
-  validates :name, :description, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true
+  validates :description, presence: true
 
 end

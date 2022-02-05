@@ -8,6 +8,6 @@ class User < ApplicationRecord
   has_many :rented_ships, through: :bookings, source: :pirate_ship
 
 
-  validates :email, format: { with: /\A.*@.*\.com\z/ }
+  validates :email, format: { with: /\A.*@.*\..*\z/ }
 
 end
