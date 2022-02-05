@@ -1,0 +1,33 @@
+<h1>Welcome to yer dashboa'd, <%= @name %>.</h1>
+<% if @pending_ships.size > 0 %>
+  <div class="alert alert-primary" role="alert">
+    You have pending reservations
+  </div>
+<% end %>
+<ul>
+  <li>getting notified of pending reservations: DONE</li>
+  <li>look at pending reservations: DONE
+    <ul>
+    <% @pending_ships.each do |ship| %>
+      <li><%= link_to ship.name, pirate_ship_path(ship) %></li>
+    <% end %>
+    </ul>
+  </li>
+  <li>look at accepted reservations: DONE
+    <ul>
+    <% @confirmed_bookings.each do |booking| %>
+      <li><%= link_to booking.pirate_ship.name, pirate_ship_path(booking.pirate_ship) %></li>
+    <% end %>
+    </ul>
+  </li>
+  <li>accept reservations: PENDING : where do we put this? Maybe in the ship 'show' page if logged in as an owner?</li>
+  <li>get an list of my ships: DONE
+      <ul>
+    <% @owned_ships.each do |ship| %>
+      <li><%= link_to ship.name, pirate_ship_path(ship) %></li>
+    <% end %>
+    </ul>
+  </li>
+  <li>acces my ships: DONE by using link_to</li>
+  <li>I can deny or approve requests for my ships: isn't that the same as accepting reservations?</li>
+</ul>
