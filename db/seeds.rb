@@ -8,7 +8,7 @@
 require 'open-uri'
 require 'csv'
 require 'faker'
-require_relative 'user_seed'
+require_relative 'user_seed' if File.exist?('user_seed.rb')
 
 puts 'empty last seed'
 Booking.destroy_all
@@ -70,7 +70,7 @@ puts '---------------ships created---------------'
   puts "booking by: #{booking.user.name} who has rented: #{booking.pirate_ship.name} with status #{booking.status}"
 end
 puts '---------------bookings created---------------'
-create_users
+create_users if File.exist?('user_seed.rb')
 
 puts ''
 puts '---------------seeding process finished---------------'
