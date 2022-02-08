@@ -1,15 +1,14 @@
 class PirateShipsController < ApplicationController
   include Pundit
   before_action :authenticate_user!, except: [:index, :show]
-  after_action :verify_authorized, except: [:index, :new, :create, :edit, :show]
+  before_action :set_pirate_ship, only: [:show, :edit, :update]
+  after_action :verify_authorized, except: [:index, :new, :create, :edit, :show, :update]
 
   def index
     @pirate_ships = policy_scope(PirateShip).order(created_at: :desc)
-    #@pirate_ships = PirateShip.all
   end
 
   def show
-    @pirate_ship = PirateShip.find(params[:id])
   end
 
   def new
@@ -27,11 +26,20 @@ class PirateShipsController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    @pirate_ship.update(pirate_ship_params)
+
+    redirect_to pirate_ships_path(@pirate_ship)
+  end
+
+  private
+
+  def set_pirate_ship
     @pirate_ship = PirateShip.find(params[:id])
   end
 
-
-  private
 
   def pirate_ship_params
     params.require(:pirate_ship).permit(:name, :description, :ship_type, :capacity, :parrot_friendlyness,
