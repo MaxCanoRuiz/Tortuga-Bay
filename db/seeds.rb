@@ -8,6 +8,7 @@
 require 'open-uri'
 require 'csv'
 require 'faker'
+require_relative 'user_seed' if File.exist?('user_seed.rb')
 
 puts 'empty last seed'
 Booking.destroy_all
@@ -33,10 +34,13 @@ ship_names.shuffle!
 ship_pictures.shuffle!
 
 (0...30).each do |index|
-  pirate = User.create!(name: pirate_names[index],
+  name = pirate_names[index]
+  domains = %w[gsail.com hotsail.be parrot.org yarrhoo.be pandora.be eyepa.tch]
+  pirate = User.create!(name: name,
                         avatar_url: pirate_pictures[index],
-                        email: Faker::Internet.email,
-                        password: 'password')
+                        email: "#{name.split.join('.')}@#{domains.sample}",
+                        password: 'password',
+                        admin: false)
   puts "created #{pirate.name}"
 end
 puts '---------------pirates created---------------'
@@ -57,12 +61,16 @@ puts '---------------pirates created---------------'
 end
 puts '---------------ships created---------------'
 
-(0...60).each do
+(0...90).each do
   booking = Booking.create!(pirate_ship_id: PirateShip.all.sample[:id],
                             user_id: User.all.sample[:id],
-                            status: %w[pending confirmed rejected].sample)
+                            start_date: DateTime.new(2001,2,3,4,5,6),
+                            end_date: DateTime.new(2002,2,3,4,5,6),
+                            status: %w[pending confirmed pending confirmed rejected].sample)
   puts "booking by: #{booking.user.name} who has rented: #{booking.pirate_ship.name} with status #{booking.status}"
 end
 puts '---------------bookings created---------------'
+create_users if File.exist?('user_seed.rb')
 
-puts 'seeding process finished'
+puts ''
+puts '---------------seeding process finished---------------'
