@@ -1,7 +1,8 @@
 class PirateShipsController < ApplicationController
   include Pundit
+  before_action :authenticate_user!, except: [:index, :show]
   after_action :verify_authorized, except: [:index, :new, :create, :edit, :show]
- 
+
   def index
     @pirate_ships = policy_scope(PirateShip).order(created_at: :desc)
     #@pirate_ships = PirateShip.all

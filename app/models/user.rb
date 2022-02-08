@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :rented_ships, through: :bookings, source: :pirate_ship
 
-
   validates :email, format: { with: /\A.*@.*\..*\z/ }
 
 end
