@@ -17,8 +17,8 @@
             <h4><%= pirate_ship.ship_type %></h4>
             <p><%= pirate_ship.description %></p>
               <div class="flex">
-                <i class="material-icons mr-2">Capacity</i><span><%= pirate_ship.capacity %></span>
-                <i class="material-icons mr-2">Cannons</i> <%= pirate_ship.number_of_canons %>
+                <i class="material-icons mr-2">Capacity</i><%= pirate_ship.capacity %>
+                <i class="material-icons mr-2">Cannons</i><%= pirate_ship.number_of_canons %>
               </div>
               <div class="flex">
                 <i class="material-icons mr-2">Parrot Friendliness</i> <%= pirate_ship.parrot_friendlyness %>
@@ -26,7 +26,9 @@
           </div>
           <div class="ship-card-actions">
             <%= link_to 'See Ship', pirate_ship_path(pirate_ship) %>
+            <% if current_user == pirate_ship.user %>
             <%= link_to 'Edit', edit_pirate_ship_path(pirate_ship), class: 'ml-3 text-warning' %>
+            <% end %>
           </div>
         </div>
       </div>
