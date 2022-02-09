@@ -1,13 +1,13 @@
 .wrapper {
-  background-color: white;
+  background-color: $db_orange_bg;
   height: 600px;
 }
 
 .dashboard_card {
-  border-radius: 24px;
+  border-radius: 16px;
   background-color: white;
   overflow: hidden;
-  border: 1px solid $db_orange;
+  // border: 1px solid $db_orange;
   margin: 16px 0;
   h3 {
     margin: 0;
@@ -24,11 +24,14 @@
 .header {
   background-color: $db_orange;
   color: white;
-  font-size: x-large;
+  font-size: large;
   font-weight: 500;
-  padding: 0.5em;
+  padding: 0.6em;
 }
 
 .ship_text {
-
+  font-size: large;
+  &:hover {
+    text-decoration: none !important;
+  }
 }

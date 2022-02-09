@@ -10,49 +10,65 @@
     <% if @pending_bookings.size > 0 %>
       <div class="dashboard_card">
         <div class="header">Ships yee requested to sail</div>
-        <% @pending_bookings.each do |booking| %>
-          <div class="ship_card">
-            <div class="ship_text d-flex flex-column m-2">
-              <%= link_to booking.pirate_ship.name, pirate_ship_path(booking.pirate_ship),  %>
-              <%= booking.start_date %> - <%= booking.end_date %>
-            </div>
+        <% if @pending_bookings.empty? %>
+          <div class="ship_text d-flex flex-column m-2 ml-3">
+            You have no pending bookings
           </div>
+        <% else %>
+          <% @pending_bookings.each do |booking| %>
+            <div class="ship_card">
+              <div class="d-flex flex-column m-2 ml-3">
+                <span class="ship_text"><%= link_to booking.pirate_ship.name, pirate_ship_path(booking.pirate_ship) %></span>
+                <span class="text-muted"><%= booking.start_date %> / <%= booking.end_date %></span>
+              </div>
+              <% unless @pending_bookings.last == booking %>
+                <hr>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     <% end %>
 
-    <div class="dashboard_card">
-      <div class="header">Ships yee will sail</div>
-      <ul>
+    <% if @pending_bookings.size > 0 %>
+      <div class="dashboard_card">
+        <div class="header">Ships yee will sail</div>
         <% @confirmed_bookings.each do |booking| %>
-          <li><%= link_to booking.pirate_ship.name, pirate_ship_path(booking.pirate_ship) %></li>
+          <div class="ship_card">
+            <div class="d-flex flex-column m-2 ml-3">
+              <span class="ship_text"><%= link_to booking.pirate_ship.name, pirate_ship_path(booking.pirate_ship) %></span>
+              <span class="text-muted"><%= booking.start_date %> / <%= booking.end_date %></span>
+            </div>
+            <% unless @confirmed_bookings.last == booking %>
+              <hr>
+            <% end %>
+          </div>
         <% end %>
-      </ul>
-    </div>
-  </div>
-
-  <div class="col col-md-7">
-    <div class="dashboard_card", style="height: 100%">
-      <div class="header">Mi Armada</div>
-    </div>
-  </div>
-
-
-</div>
-
-<ul>
-
-  <li>look at accepted reservations: DONE
-
-  </li>
-  <li>accept reservations: PENDING : where do we put this? Maybe in the ship 'show' page if logged in as an owner?</li>
-  <li>get an list of my ships: DONE
-      <ul>
-    <% @owned_ships.each do |ship| %>
-      <li><%= link_to ship.name, pirate_ship_path(ship) %></li>
+      </div>
     <% end %>
-    </ul>
-  </li>
-  <li>acces my ships: DONE by using link_to</li>
-  <li>I can deny or approve requests for my ships: isn't that the same as accepting reservations?</li>
-</ul>
+  </div>
+
+  <% if @owned_ships.size > 0 %>
+    <div class="col col-md-7">
+      <div class="dashboard_card", style="height: 100%">
+        <div class="header">Mi Armada</div>
+        <% if @owned_ships.empty? %>
+          <div class="ship_text d-flex flex-column m-2 ml-3">
+            You own no ships, matey. Better start looking for treasure maps.
+          </div>
+        <% else %>
+          <% @owned_ships.each do |ship| %>
+            <div class="ship_card">
+              <div class="ship_text d-flex flex-column m-2 ml-3">
+                <%= link_to ship.name, pirate_ship_path(ship) %>
+              </div>
+              <% unless ship == @owned_ships.last %>
+                <hr>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
