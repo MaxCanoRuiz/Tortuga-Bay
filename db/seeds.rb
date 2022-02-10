@@ -35,7 +35,7 @@ ship_pictures.shuffle!
 
 (0...30).each do |index|
   name = pirate_names[index]
-  domains = %w[gsail.com hotsail.be parrot.org yarrhoo.be pandora.be eyepa.tch]
+  domains = %w[gsail.com hotsail.com parrot.org yarrhoo.com pandora.be eyepa.tch]
   pirate = User.create!(name: name,
                         avatar_url: pirate_pictures[index],
                         email: "#{name.split.join('.')}@#{domains.sample}",

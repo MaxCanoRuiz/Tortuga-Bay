@@ -58,7 +58,7 @@
               <span class="text-muted"><%= booking.start_date %> / <%= booking.end_date %></span>
             </div>
             <%= button_to "accept", accept_booking_path, method: :post, params: { id: booking.id }, class: "btn btn-primary" %>
-            <%= button_to "reject", accept_booking_path, method: :post, params: { id: booking.id }, class: "btn btn-danger" %>
+            <%= button_to "reject", reject_booking_path, method: :post, params: { id: booking.id }, class: "btn btn-danger" %>
           </div>
             <% unless @pending_requests.last == booking %>
               <hr>
