@@ -6,6 +6,7 @@ class PirateShipsController < ApplicationController
 
   def index
     @pirate_ships = policy_scope(PirateShip).order(created_at: :desc)
+
   end
 
   def show
