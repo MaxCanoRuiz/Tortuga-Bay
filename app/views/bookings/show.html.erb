@@ -11,7 +11,7 @@
 <h1>All aboard !</h1> 
 <% end %>
   
-<h1>Ahoy ! this is ye booking for: <b><%=@booking.pirate_ship.name%></b></h1>
+<h1>Ahoy ! this is ye booking for: <b><%=link_to @booking.pirate_ship.name, pirate_ship_path(@booking.pirate_ship)%></b></h1>
 
 <div>
   <h3>Start date: <%=@booking.start_date%></h3>

@@ -10,8 +10,9 @@ class PirateShipsController < ApplicationController
   end
 
   def show
+    
   end
-
+  
   def new
     @pirate_ship = PirateShip.new
   end

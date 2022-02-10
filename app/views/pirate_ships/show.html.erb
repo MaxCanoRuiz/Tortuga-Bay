@@ -8,8 +8,14 @@
     <%=image_tag @pirate_ship.user.avatar_url, alt:@pirate_ship.user.name, class: 'avatar-larger'%>
   </div>
 
-  <% if current_user != @pirate_ship.user %>
-    <div class=book-button><%=link_to "Book now", new_pirate_ship_booking_path(@pirate_ship)%></div>
+  <% booker = @pirate_ship.bookings.any? {|booking| booking.user == current_user}%>
+  <% if booker == true %>
+    <div class=book-button><%=link_to "Book again", new_pirate_ship_booking_path(@pirate_ship)%></div>
+    <div class=book-button><%=link_to "Check your booking", new_pirate_ship_booking_path(@pirate_ship)%></div>
+  <%else%> 
+    <% if current_user != @pirate_ship.user %>
+      <div class=book-button><%=link_to "Book now", new_pirate_ship_booking_path(@pirate_ship)%></div>
+    <% end %>
   <% end %>
 
   <div>
