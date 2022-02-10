@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   get "/dashboard", to: "pages#dashboard", as: "dashboard"
   get "/map", to: "pages#map", as: "map"
+  post "/accept", to: "pages#accept", as: "accept_booking"
+  post "/reject", to: "pages#reject", as: "reject_booking"
 end

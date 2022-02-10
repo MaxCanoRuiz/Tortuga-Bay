@@ -9,7 +9,7 @@
     </div>
     <% if @pending_bookings.size > 0 %>
       <div class="dashboard_card">
-        <div class="header">Ships yee requested to sail</div>
+        <div class="header renting">Ships yee requested to sail</div>
         <% if @pending_bookings.empty? %>
           <div class="ship_text d-flex flex-column m-2 ml-3">
             You have no pending bookings
@@ -18,7 +18,7 @@
           <% @pending_bookings.each do |booking| %>
             <div class="ship_card">
               <div class="d-flex flex-column m-2 ml-3">
-                <span class="ship_text"><%= link_to booking.pirate_ship.name, pirate_ship_path(booking.pirate_ship) %></span>
+                <span class="ship_text"><%= link_to booking.pirate_ship.name, pirate_ship_booking_path(booking.pirate_ship.id, booking) %></span>
                 <span class="text-muted"><%= booking.start_date %> / <%= booking.end_date %></span>
               </div>
               <% unless @pending_bookings.last == booking %>
@@ -32,11 +32,11 @@
 
     <% if @pending_bookings.size > 0 %>
       <div class="dashboard_card">
-        <div class="header">Ships yee will sail</div>
+        <div class="header renting">Ships yee will sail</div>
         <% @confirmed_bookings.each do |booking| %>
           <div class="ship_card">
             <div class="d-flex flex-column m-2 ml-3">
-              <span class="ship_text"><%= link_to booking.pirate_ship.name, pirate_ship_path(booking.pirate_ship) %></span>
+              <span class="ship_text"><%= link_to booking.pirate_ship.name, pirate_ship_booking_path(booking.pirate_ship.id, booking) %></span>
               <span class="text-muted"><%= booking.start_date %> / <%= booking.end_date %></span>
             </div>
             <% unless @confirmed_bookings.last == booking %>
@@ -46,12 +46,67 @@
         <% end %>
       </div>
     <% end %>
+
+    <% if @pending_requests.size > 0 %>
+      <div class="dashboard_card">
+        <div class="header owned">This poor fella wants to give ya dubloons.</div>
+        <% @pending_requests.each do |booking| %>
+          <div class="ship_card">
+          <div class="d-flex align-items-center">
+            <div class="d-flex flex-column m-2 ml-3">
+              <span class="ship_text"><%= link_to booking.pirate_ship.name, pirate_ship_booking_path(booking.pirate_ship.id, booking) %></span>
+              <span class="text-muted"><%= booking.start_date %> / <%= booking.end_date %></span>
+            </div>
+            <%= button_to "accept", accept_booking_path, method: :post, params: { id: booking.id }, class: "btn btn-primary" %>
+            <%= button_to "reject", accept_booking_path, method: :post, params: { id: booking.id }, class: "btn btn-danger" %>
+          </div>
+            <% unless @pending_requests.last == booking %>
+              <hr>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
+    <% end %>
+
+    <% if @confirmed_requests.size > 0 %>
+      <div class="dashboard_card">
+        <div class="header owned">All the poor basta'ds who rented yar ship.</div>
+        <% @confirmed_requests.each do |booking| %>
+          <div class="ship_card">
+            <div class="d-flex flex-column m-2 ml-3">
+              <span class="ship_text"><%= link_to booking.pirate_ship.name, pirate_ship_booking_path(booking.pirate_ship.id, booking) %></span>
+              <span class="text-muted"><%= booking.start_date %> / <%= booking.end_date %></span>
+            </div>
+            <% unless @confirmed_requests.last == booking %>
+              <hr>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
+    <% end %>
+
+    <% if @rejected_requests.size > 0 %>
+      <div class="dashboard_card">
+        <div class="header owned">All the little pirate dreams ya shredded.</div>
+        <% @rejected_requests.each do |booking| %>
+          <div class="ship_card">
+            <div class="d-flex flex-column m-2 ml-3">
+              <span class="ship_text"><%= link_to booking.pirate_ship.name, pirate_ship_booking_path(booking.pirate_ship.id, booking) %></span>
+              <span class="text-muted"><%= booking.start_date %> / <%= booking.end_date %></span>
+            </div>
+            <% unless @rejected_requests.last == booking %>
+              <hr>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
+    <% end %>
   </div>
 
-  <% if @owned_ships.size > 0 %>
-    <div class="col col-md-7">
-      <div class="dashboard_card">
-        <div class="header">Mi Armada</div>
+  <div class="col col-md-7">
+    <% if @owned_ships.size > 0 %>
+      <div class="dashboard_card armada">
+        <div class="header owned">Mi Armada</div>
         <% if @owned_ships.empty? %>
           <div class="ship_text d-flex flex-column m-2 ml-3">
             You own no ships, matey. Better start looking for treasure maps.
@@ -69,6 +124,6 @@
           <% end %>
         <% end %>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+
+  </div>
