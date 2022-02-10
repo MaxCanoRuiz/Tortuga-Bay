@@ -6,7 +6,18 @@
     <% end %>
     <P><%= @pirate_ship.description%></p>
   </div>
+<<<<<<< HEAD
+
+  <div class=book-button><%=link_to "Book now", new_pirate_ship_booking_path(@pirate_ship)%></div>
+
+ <div id="map"
+     style="width: 100%; height: 830px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+=======
   <div class="book-button"><%=link_to "Book now", new_pirate_ship_booking_path(@pirate_ship)%></div>
+>>>>>>> master
   <div>
     <ul>
       <li>Port: <%= @pirate_ship.port%></li>
