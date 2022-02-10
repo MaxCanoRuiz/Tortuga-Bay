@@ -1,0 +1,37 @@
+.wrapper {
+  background-color: $db_orange_bg;
+  height: 600px;
+}
+
+.dashboard_card {
+  border-radius: 16px;
+  background-color: white;
+  overflow: hidden;
+  // border: 1px solid $db_orange;
+  margin: 16px 0;
+  h3 {
+    margin: 0;
+  }
+}
+
+.welcome_avatar {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin: 16px;
+}
+
+.header {
+  background-color: $db_orange;
+  color: white;
+  font-size: large;
+  font-weight: 500;
+  padding: 0.6em;
+}
+
+.ship_text {
+  font-size: large;
+  &:hover {
+    text-decoration: none !important;
+  }
+}
