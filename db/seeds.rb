@@ -63,7 +63,7 @@ puts '---------------pirates created---------------'
                                    "Cristóbal, Colón", "Puerto Bolívar, Colombia", "Big Creek, Belize",
                                    "Grenville, Grenada", "Coveñas", "Riohacha", "Roseau"].sample,
                             country: Faker::Address.country)
-  file = URI.open(ship_pictures[0])
+  file = URI.open(ship_pictures[index])
   ship.pictures.attach(io: file, filename: "my_ship.jpg", content_type: 'image/jpg')
   puts "created #{ship.name} owned by #{ship.user.name}"
 end
