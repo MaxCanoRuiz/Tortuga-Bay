@@ -53,9 +53,17 @@ puts '---------------pirates created---------------'
                             ship_type: %w[barge galley galleon skiff steamer dreadnaught].sample,
                             capacity: Random.rand(22..89),
                             number_of_canons: Random.rand(12..675),
-                            port: Faker::Address.city,
+                            port: ["Gustavia, St Barth", "Charlotte Amalie, St Thomas", "Basseterre, St Kitts",
+                                   "Fort-de-France, Martinique", "Cozumel, Mexico", "Belize City, Belize",
+                                   "Bridgetown, Barbados", "Castries, St. Lucia", "Cococay, Bahamas", "Colon, Panama",
+                                   "Kingston, Jamaica", "Roatan, Honduras", "St. Johns, Antigua", "Labadee, Haiti",
+                                   "Willemstad, Curacao", "Port of Santo Domingo", "Punta Cana, Dominican Republic",
+                                   "Puerto Limon, Costa Rica", "Cozumel, Mexico", "George Town, Grand Cayman",
+                                   "Barcelona, Venezuela", "Montego Bay", "Basse-Terre", "Tolú",
+                                   "Cristóbal, Colón", "Puerto Bolívar, Colombia", "Big Creek, Belize",
+                                   "Grenville, Grenada", "Coveñas", "Riohacha", "Roseau"].sample,
                             country: Faker::Address.country)
-  file = URI.open(ship_pictures[index])
+  file = URI.open(ship_pictures[0])
   ship.pictures.attach(io: file, filename: "my_ship.jpg", content_type: 'image/jpg')
   puts "created #{ship.name} owned by #{ship.user.name}"
 end
@@ -81,7 +89,10 @@ puts ''
                               ship_type: %w[barge galley galleon skiff steamer dreadnaught].sample,
                               capacity: Random.rand(22..89),
                               number_of_canons: Random.rand(12..675),
-                              port: Faker::Address.city,
+                              port: ["Labadee, Haiti", "Nassau, Bahamas", "New Orleans, Louisiana", "Ocho Rios, Jamaica",
+                                     "Oranjestad, Aruba", "Philipsburg, St. Maarten", "Ponce, Puerto Rico",
+                                     "Puerto Limon, Costa Rica", "Falmouth, Jamaica", "Charlotte Amalie, St Thomas",
+                                     "Fort-de-France, Martinique","San Juan, Puerto Rico"].sample,
                               country: Faker::Address.country)
     file = URI.open(ship_pictures[index])
     ship.pictures.attach(io: file, filename: "my_ship.jpg", content_type: 'image/jpg')
