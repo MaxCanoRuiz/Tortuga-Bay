@@ -6,6 +6,12 @@ class PirateShipsController < ApplicationController
 
   def index
     @pirate_ships = policy_scope(PirateShip).order(created_at: :desc)
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR description ILIKE :query OR country ILIKE :query"
+      @pirate_ships = PirateShip.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @pirate_ships = PirateShip.all
+    end
   end
 
   def show

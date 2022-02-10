@@ -1,15 +1,12 @@
-<div id="container">
+<div class="container">
 
   <div class='ship-intro'>
     <% @pirate_ship.pictures.each do |picture| %>
       <%= cl_image_tag picture.key, alt: @pirate_ship.name, :class => "ship-page-image"%>
     <% end %>
     <P><%= @pirate_ship.description%></p>
-
   </div>
-
-  <div class=book-button><%=link_to "Book now", new_pirate_ship_booking_path(@pirate_ship)%></div>
-
+  <div class="book-button"><%=link_to "Book now", new_pirate_ship_booking_path(@pirate_ship)%></div>
   <div>
     <ul>
       <li>Port: <%= @pirate_ship.port%></li>
@@ -19,6 +16,5 @@
       <li>Parrot friendlyness: <%= @pirate_ship.parrot_friendlyness%></li>
       <li>Country: <%= @pirate_ship.country%></li>
     </ul>
-
-  </div>
 </div>
+<div class="back-button"><%=link_to "Go back", pirate_ships_path%></div>
