@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   end
 
   get "/dashboard", to: "pages#dashboard", as: "dashboard"
+  get "/map", to: "pages#map", as: "map"
 end
