@@ -1,9 +1,16 @@
 
-  <div id= "inputWrapper">
-    <div class="row justify-content-center">
-    <input id="input" type="search here " autocomplete="off" spellcheck="false" role="combobox" aria-live="polite" placeholder="Search">
-    <box-icon id="icon" in-searchbox background-image="search.svg"></box-icon>
+<div id= "container">
+  <div class="row justify-content-center">
+    <div class="col-8 pt-4">
+      <%= form_tag pirate_ships_path , method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a ship"
+        %>
 
-    </div>
-      <%= link_to image_tag("image.jpg" , class:"image"), pirate_ships_path %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
   </div>
+  <%= link_to image_tag("image.jpg" , class:"image"), pirate_ships_path %>
+</div>

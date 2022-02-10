@@ -55,7 +55,7 @@ puts '---------------pirates created---------------'
                             number_of_canons: Random.rand(12..675),
                             port: Faker::Address.city,
                             country: Faker::Address.country)
-  file = URI.open(ship_pictures[index])
+  file = URI.open(ship_pictures[0])
   ship.pictures.attach(io: file, filename: "my_ship.jpg", content_type: 'image/jpg')
   puts "created #{ship.name} owned by #{ship.user.name}"
 end
