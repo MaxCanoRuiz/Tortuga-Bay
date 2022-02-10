@@ -5,10 +5,12 @@
       <%= cl_image_tag picture.key, alt: @pirate_ship.name, :class => "ship-page-image"%>
     <% end %>
     <P><%= @pirate_ship.description%></p>
-
+    <%=image_tag @pirate_ship.user.avatar_url, alt:@pirate_ship.user.name, class: 'avatar-larger'%>
   </div>
 
-  <div class=book-button><%=link_to "Book now", new_pirate_ship_booking_path(@pirate_ship)%></div>
+  <% if current_user != @pirate_ship.user %>
+    <div class=book-button><%=link_to "Book now", new_pirate_ship_booking_path(@pirate_ship)%></div>
+  <% end %>
 
   <div>
     <ul>
