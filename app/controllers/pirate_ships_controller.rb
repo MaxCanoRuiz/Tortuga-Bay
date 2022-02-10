@@ -6,10 +6,16 @@ class PirateShipsController < ApplicationController
 
   def index
     @pirate_ships = policy_scope(PirateShip).order(created_at: :desc)
-
   end
 
   def show
+
+    @markers = [{
+      lat: @pirate_ship.latitude,
+      lng: @pirate_ship.longitude,
+      info_window: render_to_string(partial: "info_window", locals: { pirate_ship: @pirate_ship }),
+      image_url: helpers.asset_url('harbor.svg')
+      }]
   end
 
   def new
