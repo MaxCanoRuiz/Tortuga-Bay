@@ -1,6 +1,6 @@
 .wrapper {
   background-color: $db_orange_bg;
-  height: 600px;
+  height: 100%;
 }
 
 .dashboard_card {
@@ -14,6 +14,10 @@
   }
 }
 
+.armada {
+  height: auto;
+}
+
 .welcome_avatar {
   border-radius: 50%;
   width: 60px;
@@ -22,11 +26,18 @@
 }
 
 .header {
-  background-color: $db_orange;
   color: white;
   font-size: large;
   font-weight: 500;
   padding: 0.6em;
+}
+
+.renting {
+  background-color: $db_orange;
+}
+
+.owned {
+  background-color: $db_purple;
 }
 
 .ship_text {
