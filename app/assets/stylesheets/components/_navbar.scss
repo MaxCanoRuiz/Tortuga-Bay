@@ -13,13 +13,109 @@
   margin-right: 0.5em;
 }
 
-.brand-name {
-  font-family: 'UnifrakturCook', cursive;
-  font-size: x-large;
-  text-decoration: none;
-  margin: 0;
-}
 
 .nav-item {
   margin-right: 1em;
+}
+
+.navbar-white {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: black;
+  padding: 0 1em;
+}
+
+.logo {
+  height: 3em;
+  width: 3em;
+  object-fit: cover;
+  margin: 0 0 8px 0;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  margin-left: 1em;
+  display: flex;
+  justify-content: center;
+  p {
+    text-decoration: none;
+    font-family: 'UnifrakturCook', cursive;
+    font-size: 1.6rem;
+    align-self: center;
+    color: black;
+    margin: 0;
+  }
+}
+
+.brand-name {
+
+}
+
+.navbar-links ul,
+.login ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-links li,
+.login li {
+  list-style: none;
+  align-self: center;
+  margin: 0 0.5em;
+}
+
+.navbar-links li a,
+.login li a {
+    text-decoration: none;
+    color: black;
+    height: 100%;
+    &:hover {
+      background-color: $db_orange_bg;
+    }
+  }
+
+.toggle-button {
+  position: absolute;
+  top: .75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 30px;
+  width: 30px;
+  .bar {
+    height: 4px;
+    width: 100%;
+    background-color: black;
+    border-radius: 2px;
+  }
+}
+
+@media (max-width: 600px) {
+  .toggle-button {
+    display: flex;
+  }
+
+  .navbar-links {
+    display: flex;
+    margin-right: 1rem;
+    width: 100%;
+  }
+
+  .navbar-white {
+    flex-direction: column;
+  }
+
+  .navbar-links ul {
+    flex-direction: column;
+    width: 100%;
+  }
 }
