@@ -1,6 +1,6 @@
 <div class="row wrapper">
   <div class="col col-md-5">
-    <div class="dashboard_card d-flex align-items-center">
+    <div class="dashboard_card welcome d-flex align-items-center">
       <%= image_tag (current_user.avatar_url || 'pirate_skull'), class: "welcome_avatar" %>
       <div>
         <span>Welcome to yer dashboa'd</span>
@@ -30,7 +30,7 @@
       </div>
     <% end %>
 
-    <% if @pending_bookings.size > 0 %>
+    <% if @confirmed_bookings.size > 0 %>
       <div class="dashboard_card">
         <div class="header renting">Ships yee will sail</div>
         <% @confirmed_bookings.each do |booking| %>
@@ -49,16 +49,18 @@
 
     <% if @pending_requests.size > 0 %>
       <div class="dashboard_card">
-        <div class="header owned">This poor fella wants to give ya dubloons.</div>
+        <div class="header owned">This poor fella wants to give ya dubloons</div>
         <% @pending_requests.each do |booking| %>
           <div class="ship_card">
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex flex-column m-2 ml-3">
               <span class="ship_text"><%= link_to booking.pirate_ship.name, pirate_ship_booking_path(booking.pirate_ship.id, booking) %></span>
               <span class="text-muted"><%= booking.start_date %> / <%= booking.end_date %></span>
             </div>
-            <%= button_to "accept", accept_booking_path, method: :post, params: { id: booking.id }, class: "btn btn-primary" %>
-            <%= button_to "reject", reject_booking_path, method: :post, params: { id: booking.id }, class: "btn btn-danger" %>
+            <div class="d-flex">
+              <%= button_to "+", accept_booking_path, method: :post, params: { id: booking.id }, class: "button button-accept mr-3" %>
+              <%= button_to "-", reject_booking_path, method: :post, params: { id: booking.id }, class: "button button-reject mr-3" %>
+            </div>
           </div>
             <% unless @pending_requests.last == booking %>
               <hr>
@@ -70,7 +72,7 @@
 
     <% if @confirmed_requests.size > 0 %>
       <div class="dashboard_card">
-        <div class="header owned">All the poor basta'ds who rented yar ship.</div>
+        <div class="header owned">All the poor basta'ds who rented a ship</div>
         <% @confirmed_requests.each do |booking| %>
           <div class="ship_card">
             <div class="d-flex flex-column m-2 ml-3">
@@ -87,7 +89,7 @@
 
     <% if @rejected_requests.size > 0 %>
       <div class="dashboard_card">
-        <div class="header owned">All the little pirate dreams ya shredded.</div>
+        <div class="header owned">All the little pirate dreams ya shredded</div>
         <% @rejected_requests.each do |booking| %>
           <div class="ship_card">
             <div class="d-flex flex-column m-2 ml-3">
@@ -105,7 +107,7 @@
 
   <div class="col col-md-7">
     <% if @owned_ships.size > 0 %>
-      <div class="dashboard_card armada">
+      <div class="dashboard_card armada d-flex flex-column">
         <div class="header owned">Mi Armada</div>
         <% if @owned_ships.empty? %>
           <div class="ship_text d-flex flex-column m-2 ml-3">
@@ -123,6 +125,10 @@
             </div>
           <% end %>
         <% end %>
+        <div id="map"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
       </div>
     <% end %>
 

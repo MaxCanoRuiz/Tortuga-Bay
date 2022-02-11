@@ -61,61 +61,66 @@ puts '---------------pirates created---------------'
                                    "Puerto Limon, Costa Rica", "Cozumel, Mexico", "George Town, Grand Cayman",
                                    "Barcelona, Venezuela", "Montego Bay", "Basse-Terre", "Tolú",
                                    "Cristóbal, Colón", "Puerto Bolívar, Colombia", "Big Creek, Belize",
-                                   "Grenville, Grenada", "Coveñas", "Riohacha", "Roseau"].sample,
-                            country: Faker::Address.country)
+                                   "Grenville, Grenada", "Coveñas", "Riohacha", "Roseau"].sample)
   file = URI.open(ship_pictures[index])
   ship.pictures.attach(io: file, filename: "my_ship.jpg", content_type: 'image/jpg')
   puts "created #{ship.name} owned by #{ship.user.name}"
 end
 puts '---------------ships created---------------'
 
-(0...90).each do
+90.times do
+  start_datetime = DateTime.new(rand(1732..1832), rand(1..12), rand(1..28))
+  end_datetime = start_datetime + rand(10..900)
   booking = Booking.create!(pirate_ship_id: PirateShip.all.sample[:id],
                             user_id: User.all.sample[:id],
-                            start_date: DateTime.new(2001,2,3,4,5,6),
-                            end_date: DateTime.new(2002,2,3,4,5,6),
+                            start_date: start_datetime,
+                            end_date: end_datetime,
                             status: %w[pending confirmed pending confirmed rejected].sample)
   puts "booking by: #{booking.user.name} who has rented: #{booking.pirate_ship.name} with status #{booking.status}"
 end
+
 puts '---------------bookings created---------------'
 admins = create_users
 
 puts ''
 (0...12).each do |index|
-    ship = PirateShip.create!(name: ship_names[30 + index],
-                              parrot_friendlyness: Random.rand(0..10),
-                              user_id: admins.sample[:id],
-                              description: "an awesome ship matey, you'll loooove it.",
-                              ship_type: %w[barge galley galleon skiff steamer dreadnaught].sample,
-                              capacity: Random.rand(22..89),
-                              number_of_canons: Random.rand(12..675),
-                              port: ["Labadee, Haiti", "Nassau, Bahamas", "New Orleans, Louisiana", "Ocho Rios, Jamaica",
-                                     "Oranjestad, Aruba", "Philipsburg, St. Maarten", "Ponce, Puerto Rico",
-                                     "Puerto Limon, Costa Rica", "Falmouth, Jamaica", "Charlotte Amalie, St Thomas",
-                                     "Fort-de-France, Martinique","San Juan, Puerto Rico"].sample,
-                              country: Faker::Address.country)
-    file = URI.open(ship_pictures[index])
-    ship.pictures.attach(io: file, filename: "my_ship.jpg", content_type: 'image/jpg')
-    puts "created #{ship.name} owned by #{ship.user.name}"
-  end
+  ship = PirateShip.create!(name: ship_names[30 + index],
+                            parrot_friendlyness: Random.rand(0..10),
+                            user_id: admins.sample[:id],
+                            description: "an awesome ship matey, you'll loooove it.",
+                            ship_type: %w[barge galley galleon skiff steamer dreadnaught].sample,
+                            capacity: Random.rand(22..89),
+                            number_of_canons: Random.rand(12..675),
+                            port: ["Labadee, Haiti", "Nassau, Bahamas", "New Orleans, Louisiana", "Ocho Rios, Jamaica",
+                                    "Oranjestad, Aruba", "Philipsburg, St. Maarten", "Ponce, Puerto Rico",
+                                    "Puerto Limon, Costa Rica", "Falmouth, Jamaica", "Charlotte Amalie, St Thomas",
+                                    "Fort-de-France, Martinique","San Juan, Puerto Rico"].sample)
+  file = URI.open(ship_pictures[index])
+  ship.pictures.attach(io: file, filename: "my_ship.jpg", content_type: 'image/jpg')
+  puts "created #{ship.name} owned by #{ship.user.name}"
+end
 
-  (0...12).each do
-    booking = Booking.create!(pirate_ship_id: PirateShip.all.sample[:id],
-                              user_id: admins.sample[:id],
-                              start_date: DateTime.new(2001,2,3,4,5,6),
-                              end_date: DateTime.new(2002,2,3,4,5,6),
-                              status: %w[pending confirmed pending confirmed rejected].sample)
-    puts "booking by: #{booking.user.name} who has rented: #{booking.pirate_ship.name} with status #{booking.status}"
-  end
+12.times do
+  start_datetime = DateTime.new(rand(1732..1832), rand(1..12), rand(1..28))
+  end_datetime = start_datetime + rand(10..900)
+  booking = Booking.create!(pirate_ship_id: PirateShip.all.sample[:id],
+                            user_id: admins.sample[:id],
+                            start_date: start_datetime,
+                            end_date: end_datetime,
+                            status: %w[pending confirmed pending confirmed rejected].sample)
+  puts "booking by: #{booking.user.name} who has rented: #{booking.pirate_ship.name} with status #{booking.status}"
+end
 
-    (0...12).each do
-    booking = Booking.create!(pirate_ship_id: admins.sample.pirate_ships.sample[:id],
-                              user_id: User.all.sample[:id],
-                              start_date: DateTime.new(2001,2,3,4,5,6),
-                              end_date: DateTime.new(2002,2,3,4,5,6),
-                              status: %w[pending confirmed pending confirmed rejected].sample)
-    puts "booking by: #{booking.user.name} who has rented: #{booking.pirate_ship.name} with status #{booking.status}"
-  end
+12.times do
+  start_datetime = DateTime.new(rand(1732..1832), rand(1..12), rand(1..28))
+  end_datetime = start_datetime + rand(10..900)
+  booking = Booking.create!(pirate_ship_id: admins.sample.pirate_ships.sample[:id],
+                            user_id: User.all.sample[:id],
+                            start_date: start_datetime,
+                            end_date: end_datetime,
+                            status: %w[pending confirmed pending confirmed rejected].sample)
+  puts "booking by: #{booking.user.name} who has rented: #{booking.pirate_ship.name} with status #{booking.status}"
+end
 
 puts '---------------ships and bookings for admins created---------------'
 puts '---------------seeding process finished---------------'
