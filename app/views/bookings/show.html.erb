@@ -1,2 +1,26 @@
 
-  <h1><%=@booking.pirate_ship.name%><h2>
+<% if @booking.status.downcase == "confirmerd"%>
+  <h3 class="alert alert-success" role="alert"><%=@booking.status%><h3>
+<% elsif @booking.status.downcase == "pending"%>
+  <h3 class="alert alert-primary" role="alert"><%=@booking.status%><h3>
+<% else%>
+  <h3 class="alert alert-danger" role="alert"><%=@booking.status%><h3>
+<% end %>
+
+<% if @booking.status.downcase == "confirmerd"%> 
+<h1>All aboard !</h1> 
+<% end %>
+  
+<h1>Ahoy ! this is ye booking for: <b><%=link_to @booking.pirate_ship.name, pirate_ship_path(@booking.pirate_ship)%></b></h1>
+
+<div>
+  <h3>Start date: <%=@booking.start_date%></h3>
+  <h3>Return date: <%=@booking.end_date%></h3>
+</div>  
+
+
+<div>
+  <h3>Ye will be meeting <b><%=@booking.pirate_ship.user.name%></b> <%=image_tag @booking.pirate_ship.user.avatar_url, alt:@booking.pirate_ship.user.name, class: 'avatar-larger' %></h3>
+  <h3>Weighing anchor at: <b><%=@booking.pirate_ship.port%></b>
+</div>
+
