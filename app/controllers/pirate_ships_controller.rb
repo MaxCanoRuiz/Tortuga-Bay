@@ -15,7 +15,6 @@ class PirateShipsController < ApplicationController
   end
 
   def show
-
     @markers = [{
       lat: @pirate_ship.latitude,
       lng: @pirate_ship.longitude,
@@ -23,7 +22,7 @@ class PirateShipsController < ApplicationController
       image_url: helpers.asset_url('harbor.svg')
       }]
   end
-
+  
   def new
     @pirate_ship = PirateShip.new
   end

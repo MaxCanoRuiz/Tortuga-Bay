@@ -12,13 +12,12 @@ class BookingsController < ApplicationController
   end
 
   def create
-
     @booking = Booking.new(booking_params)
     @booking.pirate_ship = @pirate_ship
     @booking.status = "pending"
     @booking.user = current_user
     if @booking.save
-      redirect_to dashboard_path
+      redirect_to pirate_ship_booking_path(@pirate_ship.id, @booking)
     else
       render :new
     end
