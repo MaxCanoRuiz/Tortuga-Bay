@@ -1,5 +1,20 @@
-<%= simple_form_for [@pirate_ship, @booking] do |f| %>
-  <%=f.input :start_date, as: :date, html5: true%>
-  <%=f.input :end_date, as: :date, html5: true%>
-  <%=f.button :submit, "confirm_booking", class: "btn btn-primary"%>
-<% end %>
+
+<div class='booking-form'>
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-12 col-md-6 offset-lg-3">
+        <div class="booking-form">
+          <h1>Select dates for: </h1>
+          <h2><b><%=@pirate_ship.name%></b></h2>
+          <% @pirate_ship.pictures.each do |picture| %>
+              <%= cl_image_tag picture.key, alt: @pirate_ship.name, :class => "ship-page-image"%>
+            <% end %>
+          <%= simple_form_for [@pirate_ship, @booking] do |f| %>
+          <%=f.input :start_date, as: :date, html5: true%>
+          <%=f.input :end_date, as: :date, html5: true%>
+          <%=f.button :submit, "Confirm_booking", class: "select-date-button"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

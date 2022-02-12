@@ -1,27 +1,31 @@
 <div class="pirate_ship_show_container">
 
   <div class='ship-intro'>
-    <h1><b><%= @pirate_ship.name%><b></h1>
-    <h4><%= @pirate_ship.description%></h4>
+    <div class='name'>
+      <h1><b><%= @pirate_ship.name%><b></h1>
+      <h4><%= @pirate_ship.description%></h4>
+    </div>
     <% @pirate_ship.pictures.each do |picture| %>
       <%= cl_image_tag picture.key, alt: @pirate_ship.name, :class => "ship-page-image"%>
     <% end %>
 
     <div>
       <ul class='ship-details'>
-        <li><i class="fa fa-solid fa-anchor"> </i>Port: <%= @pirate_ship.port.split(", ")[0]%></li>
-        <li><i class="fa fa-solid fa-anchor"> </i>Type: <%= @pirate_ship.ship_type%></li>
-        <li><i class="fa fa-solid fa-anchor"> </i>Capacity: <%= @pirate_ship.capacity%></li>
-        <li><i class="fa fa-solid fa-anchor"> </i>Number of cannons: <%= @pirate_ship.number_of_canons%></li>
-        <li><i class="fa fa-solid fa-anchor"> </i>Parrot friendlyness: <%= @pirate_ship.parrot_friendlyness%></li>
-        <li><i class="fa fa-solid fa-anchor"> </i>Country: <%= @pirate_ship.port.split(", ")[1]%></li>
+        <li><i class="fa fa-solid fa-anchor"></i>Port: <%= @pirate_ship.port.split(", ")[0]%></li>
+        <li><i class="fa-solid fa-ship"></i>Type: <%= @pirate_ship.ship_type%></li>
+        <li><i class="fa fa-solid fa-users"></i>Capacity: <%= @pirate_ship.capacity%></li>
+        <li><i class="fa-solid fa-bowling-ball"></i> Number of cannons: <%= @pirate_ship.number_of_canons%></li>
+        <li><i class="fa-solid fa-crow"></i>Parrot friendlyness: <%= @pirate_ship.parrot_friendlyness%></li>
+        <li><i class="fa-solid fa-map-location"></i>Country: <%= @pirate_ship.port.split(", ")[1]%></li>
       </ul>
     </div>
         <div>
       <% booker = @pirate_ship.bookings.any? {|booking| booking.user == current_user}%>
-      <% if booker == true %>
+      <% booker_booking = @pirate_ship.bookings.find {|booking| booking.user == current_user}%>
+  
+      <% if booker %>
         <div class='book-button'><%=link_to "Book again", new_pirate_ship_booking_path(@pirate_ship)%></div>
-        <div class='book-button'><%=link_to "Check your booking", new_pirate_ship_booking_path(@pirate_ship)%></div>
+        <div class='book-button'><%=link_to "Check your booking", pirate_ship_booking_path(@pirate_ship, booker_booking.id)%></div>
       <%else%>
         <% if current_user != @pirate_ship.user %>
           <div class='book-button'><%=link_to "Book now", new_pirate_ship_booking_path(@pirate_ship)%></div>
@@ -32,9 +36,9 @@
     </div>
   </div>
 
-  <div>
+  <div class='map-and-banner'>
     <div id="map"
-          style="width: 120%; height: 530px;"
+          style="width:95%; height: 530px;"
           data-markers="<%= @markers.to_json %>"
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
@@ -42,3 +46,5 @@
      <h2>Owner: <%=@pirate_ship.user.name%>   <%=image_tag @pirate_ship.user.avatar_url, alt:@pirate_ship.user.name, class: 'avatar-larger'%></h2>
     </div>
   </div>
+  
+</div>
