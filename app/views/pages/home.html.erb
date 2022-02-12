@@ -1,29 +1,25 @@
-  <div class="my-banner">
+<div class="my-banner">
+  <div class="overlay"></div>
 
-<%= link_to pirate_ships_path, class: 'text-homepage', style: 'text-decoration: none; color: white;' do %>
   <div class="home-page">
-      <h1>LA TORTUGA BAY</h1>
-      <h4>The perfect ship for all your expectations needs</p>
-<% end %>
+    <%= link_to pirate_ships_path, class: 'text-homepage', style: 'text-decoration: none; color: white;' do %>
+      <h1>Tortuga Bay</h1>
+      <h2>The parrfect ship <br>for all yer treasure hunting needs.</h2>
+    <% end %>
 
     <div class= "search">
       <%= form_tag pirate_ships_path , method: :get do %>
-      <div class="d-flex bg-white rounded p-2">
-        <div class="flex-grow-1 ">
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control border-0 shadow-none" ,
-            placeholder: "Choose your port?"
-          %>
-        </div>
-        <div>
-          <%= button_tag(type: "submit", class: "btn btn-default") do %>
-              <i class="fas fa-search"></i>
-          <% end %>
-        </div>
-      </div>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "search-field",
+          placeholder: "Choose your port?"
+        %>
+        <%= button_tag(type: "submit", class: "search-button") do %>
+            <i class="fas fa-search"></i>
+        <% end %>
       <% end %>
     </div>
+
   </div>
 
   </div>
