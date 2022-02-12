@@ -68,18 +68,19 @@
 .navbar-links li,
 .login li {
   list-style: none;
-  align-self: center;
   margin: 0 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background-color: $db_orange_bg;
+  }
 }
 
 .navbar-links li a,
 .login li a {
     text-decoration: none;
     color: black;
-    height: 100%;
-    &:hover {
-      background-color: $db_orange_bg;
-    }
   }
 
 .toggle-button {
