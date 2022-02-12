@@ -1,16 +1,21 @@
+<div class= "container p-2 search">
+  <%= form_tag pirate_ships_path , method: :get do %>
+    <div class="d-flex bg-white rounded p-2">
+      <div class="flex-grow-1 ">
 
-<div id= "container">
-  <div class="row justify-content-center">
-    <div class="col-8 pt-4">
-      <%= form_tag pirate_ships_path , method: :get do %>
         <%= text_field_tag :query,
           params[:query],
-          class: "form-control",
-          placeholder: "Find a ship"
+          class: "form-control border-0 shadow-none" ,
+          placeholder: "Find a ship "
         %>
 
-        <%= submit_tag "Search", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-  <%= link_to image_tag("image.jpg" , class:"image"), pirate_ships_path %>
+      </div>
+      <div>
+       <%= button_tag(type: "submit", class: "btn btn-default") do %>
+            <i class="fas fa-search"></i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
+  <%= link_to image_tag("image.jpg" , class:"image"), pirate_ships_path %>
