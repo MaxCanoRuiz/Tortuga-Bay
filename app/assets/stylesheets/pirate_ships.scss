@@ -1,6 +1,20 @@
+
+
+//body {
+ // background-color: rgb(162, 74, 6);
+//}
+
+.ships_container {
+  background-color: #a0460113;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+}
+
 .flex {
   display: flex;
 }
+
 .flex-align {
   display: flex;
   align-items: center;
@@ -14,16 +28,22 @@
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  padding: 8px;
 }
 
 .ship-card-image {
-  height: 180px;
+  height: 250px;
   background-position: center;
   background-size: cover;
 }
 
 .ship-card-content {
-  padding: 24px;
+  height: 130px;
+  background-position: center;
+  background-size: cover;
+  padding-top: 10px;
+  padding-left: 24px;
+  padding-right: 24px;
   background-color: #F8F9FA;
 }
 
@@ -32,4 +52,37 @@
   background-color: inherit;
   border-top: 1px solid rgba(160,160,160,0.2);
   padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+}
+.see-button a {
+    background-color: rgb(162, 74, 6);
+    border-radius: 8px;
+    padding: 10px;
+    color: beige;
+}
+
+.see-button {
+  padding: 10px 0px 5px 0px;
+}
+
+.edit-button a {
+    background-color: #548687;
+    border-radius: 8px;
+    padding: 10px;
+    color: beige;
+}
+
+.edit-button {
+  padding: 10px 8px 5px 5px;
+}
+
+
+
+h1 {
+  text-align: center;
+}
+
+p {
+font-style: italic;
 }
