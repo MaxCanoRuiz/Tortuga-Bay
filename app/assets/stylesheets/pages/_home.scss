@@ -10,6 +10,7 @@
 .search {
   width: 25em;
   align-self: center;
+  z-index: 10;
 }
 
 .my-banner {
@@ -31,23 +32,8 @@
   }
 }
 
-.container {
-  text-align: center;
-}
-
 .text-homepage {
   color: white;
   text-align: center;
   text-shadow: 0px 0px 16px rgba(0 , 0 , 0 , 0.3);
 }
-
-// @media(max-width: 992px) {
-//   .cards {
-//     grid-template-columns: 1fr 1fr;
-//   }
-// }
-// @media(max-width: 768px) {
-//   .cards {
-//     grid-template-columns: 1fr 1fr;
-//   }
-// }
