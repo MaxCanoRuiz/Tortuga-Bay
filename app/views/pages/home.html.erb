@@ -1,12 +1,9 @@
-
-<div class="my-banner">
-
+<%= link_to pirate_ships_path, class: 'text-homepage', style: 'text-decoration: none; color: white;' do %>
+  <div class="my-banner">
 
   <div class="home-page">
-    <div>
-      <h1 class="text-success">LA TORTUGA BAY<strong></strong></h1>
-      <p class="text-success">The perfect ship for all your expectations needs</p>
-    </div>
+      <h1>LA TORTUGA BAY</h1>
+      <h4>The perfect ship for all your expectations needs</p>
 
     <div class= "search">
       <%= form_tag pirate_ships_path , method: :get do %>
@@ -15,7 +12,7 @@
           <%= text_field_tag :query,
             params[:query],
             class: "form-control border-0 shadow-none" ,
-            placeholder: "Find a ship?"
+            placeholder: "Choose your port?"
           %>
         </div>
         <div>
@@ -29,3 +26,4 @@
   </div>
 
   </div>
+<% end %>

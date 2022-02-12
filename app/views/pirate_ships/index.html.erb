@@ -7,7 +7,7 @@
 
   <div class="row">
     <% @pirate_ships.each do |pirate_ship| %>
-      <div class="col-4">
+      <div class="col-12 col-md-6 col-lg-4">
         <div class="ship-card">
           <div class="ship-card-image" style="background-image: url('<%= cl_image_path pirate_ship.pictures.first.key %>')"></div>
           <div class="ship-card-content">
