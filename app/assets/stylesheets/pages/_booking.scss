@@ -1,0 +1,38 @@
+
+.booking-form {
+  background-color: $db_orange_bg;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  border: 2px 120px 2px 120px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: "Nunito", "Helvetica", "sans-serif";
+}
+
+.select-date-button { 
+  padding: 20px 0px 20px 0px;
+  font-weight: bold;  
+  background-color: $db_orange;
+  border-radius: 8px;
+  padding: 20px;
+  color: beige;
+}
+
+.booking-confirmation {
+  background-color: $db_orange_bg;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  border: 2px 120px 2px 120px;
+  padding-bottom: 60px;
+}
+
+.back-dashboard-button {
+  padding: 20px 0px 20px 0px;
+  font-weight: bold;  
+  background-color: $db_orange;
+  border-radius: 8px;
+  padding: 20px;
+  color: beige;
+  float: left;
+}

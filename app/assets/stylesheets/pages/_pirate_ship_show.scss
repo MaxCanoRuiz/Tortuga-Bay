@@ -1,55 +1,63 @@
 .ship-intro {
-  background-color: rgba(240, 229, 229, 0.24);
+  background-color: $db_orange_bg;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  padding: 20px;
 }
 
-.ship-owner-avatar {
-  width:120px;
+.avatar-larger {
+  width: 120px;
   height: 120px;
   border-radius: 50%;
 }
 
 .pirate_ship_show_container {
+  background-color: $db_orange_bg;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   display: flex;
+  border: 2px 120px 2px 120px;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 20px;
   #map{
-    margin-top: 65px;
+    margin-top: 20px;
   }
 }
 
 .book-button a {
-  background-color: rgba(85, 31, 31, 0.747);
+  background-color: $db_orange;
   border-radius: 8px;
   padding: 20px;
   color: beige;
 }
+
 .book-button {
   padding: 20px 0px 20px 0px;
-}
-.back-button {
-  padding: 60px 0px 60px 0px;
-  border-radius: 8px;
-  text-align: center;
 }
 
 .ship-details {
   list-style-type:none;
   padding-left: 0px;
   margin-top: 20px;
+  font-size: 20px;
   i {
     margin-right: 10px;
-    font-size: 20px;
+    font-size: 25px;
   }
 }
 
 .owner-banner {
-  margin-top: 30px;
-  margin-left: 70px;
-  background-color: #f4f8fab9;
-  border-radius: 2px;
+  margin-top: 80px;
+  border-radius: 8px 70px 70px 8px;
+  background-color: $db_gold;
+  padding-left: 20px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
    h2{
     font-weight: bold;
    }
+}
+
+.map-and-banner {
+  margin-right: 20px;
 }
