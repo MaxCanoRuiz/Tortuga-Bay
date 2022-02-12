@@ -1,4 +1,4 @@
 <div class="ship-card-image" style="background-image: url('<%= cl_image_path pirate_ship.pictures.first.key %>')"></div>
 <h2><%= pirate_ship.name %></h2>
 <h4>Port:  <%= pirate_ship.port %></h4>
-<%= link_to 'See Ship', pirate_ship_path(pirate_ship) %>
+<%= button_to 'See Ship', pirate_ship_path(pirate_ship), class: "btn btn-success" %>
